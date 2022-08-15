@@ -3245,6 +3245,8 @@ private[spark] object Utils extends Logging {
     }
     files.toSeq
   }
+  def isRssEnabled(conf: SparkConf): Boolean =
+    conf.get("spark.shuffle.manager", "sort") == "org.apache.spark.shuffle.rss.RssShuffleManager"
 
   /**
    * Return the median number of a long array
